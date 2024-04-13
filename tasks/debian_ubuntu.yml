@@ -1,23 +1,5 @@
 ---
 
-- name: Network | Debian-Based | Installing dependencies on controller
-  ansible.builtin.pip:
-    name: "{{ NW_HC.controller_required_mods }}"
-    state: present
-  delegate_to: localhost
-  register: install_controller_requirements
-  ignore_errors: true
-  become: false
-  run_once: true
-
-- name: Network | Debian-Based | Notify User
-  ansible.builtin.pause:
-    prompt: "You need to install the python module 'netaddr' for this role to work correctly!"
-  run_once: true
-  when:
-    - install_controller_requirements.failed is defined
-    - install_controller_requirements.failed
-
 - name: Network | Debian-Based | Ubuntu => ask User
   ansible.builtin.pause:
     prompt: 'This role does currently not support the configuration of interfaces on ubuntu systems! Do you want to continue to run the basic tasks?'
