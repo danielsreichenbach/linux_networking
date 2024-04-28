@@ -1,11 +1,9 @@
     # bridge settings
 {% for port in iface.bridge_ports[0]%}
-{%   if port|length > 1 %}  # if bridge_ports is a list and not a string..
+{%   if port|length > 1 %}  # if bridge_ports is a list and not a string.
     bridge_ports {{ iface.bridge_ports | join(' ') }}
-
 {%   else %}
     bridge_ports {{ iface.bridge_ports}}
-
 {%   endif %}
 {% endfor %}
 
@@ -20,7 +18,8 @@
 
 {% for setting, value in iface.items() %}
 {%   if setting.startswith('bridge_') %}
-{%     if setting != 'bridge_stp' or setting != 'bridge_ports' or iface.switching %}
+{%     if iface.switching or setting not in ['bridge_stp', 'bridge_ports']%}
+    # bridge settings
     {{ setting }} {{ value }}
 {%     endif %}
 {%   endif %}
