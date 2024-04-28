@@ -1,5 +1,6 @@
     # vlan settings
     #  get the current vlan-status via: 'cat /proc/net/vlan/{{ name }}'
 {% if name.find('.') == -1 %}
-    vlan-raw-device {{ iface.vlan_raw_device }}  # if the int is a vlan but is not written in the INT.VID syntax - we'll need to define the parent-interface
+    # if the int is a vlan but is not written in the INT.VID syntax - we'll need to define the parent-interface
+    vlan-raw-device {{ iface.vlan_raw_device }}
 {% endif %}
