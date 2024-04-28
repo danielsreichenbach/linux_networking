@@ -19,7 +19,7 @@
 
     # additional bonding-settings
     # defaults
-{% for setting, value in default_interface_config.bonding.items() %}
+{% for setting, value in defaults_interface.bonding.items() %}
 {%   if setting not in iface %}
     {{ setting }} {{ value }}
 {%   endif %}
