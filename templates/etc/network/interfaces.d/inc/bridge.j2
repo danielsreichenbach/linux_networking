@@ -20,7 +20,7 @@
 
 {% for setting, value in iface.items() %}
 {%   if setting.startswith('bridge_') %}
-{%     if setting != 'bridge_stp' or iface.switching %}
+{%     if setting != 'bridge_stp' or setting != 'bridge_ports' or iface.switching %}
     {{ setting }} {{ value }}
 {%     endif %}
 {%   endif %}
