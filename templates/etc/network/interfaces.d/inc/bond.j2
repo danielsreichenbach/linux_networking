@@ -1,4 +1,4 @@
-  # bonding settings
+    # bonding settings
     # get the current bond-status via: 'cat /proc/net/bonding/{{ name }}'
     bond-mode {{ iface['bond-mode'] }}
     bond-slaves {% for slave in iface['bond-slaves'] %}{{ slave }} {% endfor %}
@@ -11,11 +11,6 @@
     bond-lacp-rate 1  # lacp fast-mode
 
 {% endif %}
-
-    # pull slave interfaces up
-{% for slave in iface['bond-slaves'] %}
-    post-up ifup {{ slave }}
-{% endfor %}
 
     # additional bonding-settings
     # defaults
