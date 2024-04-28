@@ -31,11 +31,3 @@
     {{ setting }} {{ value }}
 {%   endif %}
 {% endfor %}
-
-# bonding-slave interfaces
-{% for slave in iface['bond-slaves'] %}
-allow {{ slave }}
-iface {{ slave }} inet manual
-
-{% endfor %}
-
