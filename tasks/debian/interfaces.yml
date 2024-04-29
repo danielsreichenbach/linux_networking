@@ -73,3 +73,11 @@
   when: >
     not NW.validation.enable | bool or
     copy_main_iface.changed
+
+- name: Network | Interfaces | Merge configuration in interface file
+  ansible.builtin.assemble:
+    src: '/etc/network/interfaces.d'
+    dest: '/etc/network/interfaces'
+  when:
+    - ansible_facts.os_family == 'Debian'
+    - NW.support.interfaces_merge | bool

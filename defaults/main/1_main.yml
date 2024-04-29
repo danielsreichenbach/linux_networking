@@ -7,6 +7,7 @@ defaults_ne:
     bonding: false
     traffic_forwarding: false  # if the server should act as a router (per example vpn-gateway)
     ipv6: true
+    interfaces_merge: false
 
   install_tools: true
   tools:
